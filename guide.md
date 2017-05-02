@@ -7,9 +7,12 @@
 * https://github.com/Azure/azure-quickstart-templates/tree/master/azure-jenkins
 * Click "Deploy to Azure"
 
-# Set up SSH Port Forwarding
+# Set up SSH Port Forwarding (maybe?)
 * Windows: putty.exe -ssh -L 8080:localhost:8080 <User name>@<Public DNS name of instance you just created>
 * Mac/Linux: ssh -L 8080:localhost:8080 <User name>@<Public DNS name of instance you just created>
+
+# Edit NSG to allow access on port 8080
+* az network nsg rule create -n allowjenkins -g bhiac01 --nsg-name jenkinsNSG --priority 110 --destination-port-range 8080
 
 # SSH to Jenkins VM
 * Run /opt/azure_jenkins_config/config_azure.sh and pick option 1
@@ -43,6 +46,37 @@ sudo apt-get update && sudo apt-get install azure-cli -y
 # Set up git locally
 * Install Git for Windows/Linux/Mac
 * Fork this repository on GitHub
+* Clone it locally
+
+# Configure Git on Jenkins (maybe?!)
+* SSH to Jenkins VM
+* sudo apt-get install git -y
+* ssh-keygen -t rsa -b 4096 -C "benhu@microsoft.com"
+* cd ~/.ssh
+* ssh-add id_rsa
+* cat id_rsa.pub and copy for later
+
+# Link Jenkins/GitHub
+* Go to GitHub -> Profile pic drop down -> Settings -> SSH & GPG keys
+* Add new SSH key using public key defined in previous step
+
+* Got to GitHub -> Profile pic drop down -> Settings -> Personal access tokens
+* Generate new token
+* admin:repo_hook, repo:status
+* Copy key
+* Jenkins -> Manage Jenkins -> Configure System -> GitHub Servers
+* Add new credential -> Kind: Secret text, paste in personal access token, fill in ID -> Add
+* Test connection
+
+
+# Create Build Pipeline
+* Jenkins web browser, new Item
+* Name, Freestyle Project -> OK
+* Source Code Management -> Git -> git@github.com:bhummerstone/iac-hackathon.git
+
+
+
+# Build ARM template
 
 Test login using Service Principal
 * az login --service-principal -u <Client-ID> -p <Client-secret> --tenant <Tenant-ID>
