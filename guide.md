@@ -42,7 +42,7 @@ sudo apt-get update && sudo apt-get install azure-cli -y
 
 # Set up git locally
 * Install Git for Windows/Linux/Mac
-* Create new repository in Github
+* Fork this repository on GitHub
 
 Test login using Service Principal
 * az login --service-principal -u <Client-ID> -p <Client-secret> --tenant <Tenant-ID>
