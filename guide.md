@@ -1,9 +1,8 @@
 # Infrastructure as Code Hackathon
-## Phase 1: Jenkins Deploying to Azure
-### Create RG
+## Phase 1: Building the Pipeline
+### Create Resource Group
 * az group create -n bhiac01 -l westeurope
-* West Europe
-* Pin to dashboard for easy access
+* If using Portal, can pin to Dashboard for easy access
 
 ### Create Jenkins VM
 * Azure Portal -> New -> Jenkins (Bitnami)
@@ -18,6 +17,7 @@
 * Install recommended plugins, restart
 
 ### Prepare Jenkins VM
+* SSH into Jenkins VM
 * Install Azure CLI using following code:
 
 ```bash
@@ -36,13 +36,13 @@ az ad sp create-for-rbac --scopes /subscriptions/<subscription-id>/resourceGroup
 * Test login using Service Principal:
 
 ```bash
-az login --service-principal -u <Client-ID> -p <Client-secret> --tenant <Tenant-ID>
+az login --service-principal -u <appID> -p <password> --tenant <tenant>
 ```
 
 ### Create Initial Build Pipeline
-* Jenkins web browser, new Item
+* Jenkins web browser, New Item
 * Name, Freestyle Project -> OK
-* General -> GitHub Project -> https://github.com/bhummerstone/iac-hackathon.git/
+* General -> GitHub Project -> https://github.com/bhummerstone/iac-hackathon.git
 * Source Code Management -> Git -> https://github.com/bhummerstone/iac-hackathon.git, no authentication required
 * Build Triggers -> GitHub hook trigger for GITScm polling
 * Build Environment -> Delete workspace before build starts
@@ -50,8 +50,10 @@ az login --service-principal -u <Client-ID> -p <Client-secret> --tenant <Tenant-
 
 ```bash
 az login --service-principal -u <appID> -p <password> --tenant <tenant>
-az group deployment create -g bhiac01 --template-file azuredeploy.json --parameters @azuredeploy.parameters.json
+az group deployment create -g bhiac01 --template-file templates/azuredeploy.json --parameters @templates/azuredeploy.parameters.json
 ```
+
+* Save, Build now!
 
 
 ## Phase 2: 
