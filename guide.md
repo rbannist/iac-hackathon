@@ -1,11 +1,11 @@
 # Infrastructure as Code Hackathon
 ## Phase 1: Building the Pipeline
-### Create Resource Group for Jenkins
-* az group create -n bhjenkins01 -l westeurope
-* If using Portal, can pin to Dashboard for easy access
-
-### Create Resource Group for Deployment
-* az group create -n bhiacdeploy01 -l westeurope
+### Create Resource Groups
+* One RG for Jenkins, one for deployed resources
+```bash
+az group create -n bhjenkins01 -l westeurope
+az group create -n bhiacdeploy01 -l westeurope
+```
 
 ### Create Jenkins VM
 * Azure Portal -> New -> Jenkins (Bitnami)
@@ -58,6 +58,7 @@ az group deployment create -g bhiac01 --template-file templates/azuredeploy.json
 
 * Save, Build Now
 * Click on Build Number, check out Console Output
+* Also check out deployment process in Azure Portal
 
 
 ## Phase 2: Continuous Deployment
@@ -67,16 +68,17 @@ az group deployment create -g bhiac01 --template-file templates/azuredeploy.json
 * Clone it locally from your fork
 
 ### Link Jenkins/GitHub
-* Got to GitHub -> Profile pic drop down -> Settings -> Personal access tokens
+* Go to GitHub -> Profile pic drop down -> Settings -> Personal access tokens
 * Generate new token
 * admin:repo_hook, repo:status
 * Copy key
 * Jenkins -> Manage Jenkins -> Configure System -> GitHub Servers
 * Add new credential -> Kind: Secret text, paste in personal access token, fill in ID -> Add
 * Test connection
+* Advanced -> Re-register hooks for all jobs
 
 ### Test Build Process
-* Edit templates/azuredeploy.json
+* Edit templates/azuredeploy.json locally
 * Change VM size from Standard\_A2 to Standard\_A3
 * Commit change, push to repository
 * Confirm build kicks off in Jenkins and VM size changes
