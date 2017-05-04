@@ -33,7 +33,7 @@ sudo apt-get update && sudo apt-get install azure-cli -y
 
 * Create Azure Service Principal with required permissions:
 ```bash
-az ad sp create-for-rbac --scopes /subscriptions/<subscription-id>/resourceGroups/bhiac01 -n "bhjenkinssp"
+az ad sp create-for-rbac --scopes /subscriptions/<subscription-id>/resourceGroups/bhiacdeploy01 -n "bhjenkinssp"
 ```
 
 * Copy AppID, password & tenant for later
@@ -53,7 +53,7 @@ az login --service-principal -u <appID> -p <password> --tenant <tenant>
 
 ```bash
 az login --service-principal -u <appID> -p <password> --tenant <tenant>
-az group deployment create -g bhiac01 --template-file templates/azuredeploy.json --parameters \"{\"adminPassword\":{\"value\":\"<secure_password>\"},\"dnsLabelPrefix\":{\"value\":\"<unique_dns>\"}}\"
+az group deployment create -g bhiacdeploy01 --template-file templates/azuredeploy.json --parameters \"{\"adminPassword\":{\"value\":\"<secure_password>\"},\"dnsLabelPrefix\":{\"value\":\"<unique_dns>\"}}\"
 ```
 
 * Save, Build Now
