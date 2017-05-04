@@ -1,5 +1,6 @@
 Add the following variables
-"modulesUrl": "https://github.com/bhummerstone/raw/master/iac-hackathon/dsc/WebsiteInstall.ps1.zip"
+
+"modulesUrl": "https://raw.githubusercontent.com/bhummerstone/iac-hackathon/master/dsc/WebsiteInstall.ps1.zip",
 "configurationFunction": "WebsiteInstall.ps1\\Main"
 
 
@@ -7,11 +8,11 @@ Add the following resource after the Virtual Machine resource
 
 {
       "type": "Microsoft.Compute/virtualMachines/extensions",
-      "name": "[concat(parameters('vmName'),'/', variables('vmExtensionName'))]",
+      "name": "DSC",
       "apiVersion": "2015-05-01-preview",
       "location": "[resourceGroup().location]",
       "dependsOn": [
-        "[concat('Microsoft.Compute/virtualMachines/', parameters('vmName'))]"
+        "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
       ],
       "properties": {
         "publisher": "Microsoft.Powershell",
