@@ -84,13 +84,11 @@ az group deployment create -g bhiacdeploy01 --template-file templates/azuredeplo
 * Confirm build kicks off in Jenkins and VM size changes in Azure Portal
 
 
-## Phase 3: Desired State Configuration
+## Phase 3: Integrating Desired State Configuration
 ### Adding DSC to Existing Template
-* Edit templates/azuredeploy.json
-*  
+* Copy code from dsc/add-to-template.md into templates/azuredeploy.json
+* Commit and push the changes
+* RDP into the VM and browse to http://localhost
 
 
-## Phase 4: Moving to Azure Automation DSC
-
-
-## Phase 5: More Complex Templates
+## Phase 4: Azure Automation DSC
