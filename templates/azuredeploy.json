@@ -48,7 +48,7 @@
     "virtualNetworkName": "MyVNET",
     "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]",
     "modulesUrl": "https://raw.githubusercontent.com/bhummerstone/iac-hackathon-dsc/master/WebsiteInstall.zip",
-    "configurationFunction": "WebsiteInstall.ps1\\Main"
+    "configurationFunction": "Main"
   },
   "resources": [
     {

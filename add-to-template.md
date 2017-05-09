@@ -1,7 +1,7 @@
 Add the following variables:
 
 "modulesUrl": "https://raw.githubusercontent.com/<github-username>/iac-hackathon-dsc/master/WebsiteInstall.zip",
-"configurationFunction": "WebsiteInstall.ps1\\Main"
+"configurationFunction": "Main"
 
 
 Add the following resource after the Virtual Machine resource:
@@ -20,12 +20,15 @@ Add the following resource after the Virtual Machine resource:
         "typeHandlerVersion": "2.20",
         "autoUpgradeMinorVersion": true,
         "settings": {
-          "ModulesUrl": "[variables('modulesUrl')]",
-          "ConfigurationFunction": "[variables('configurationFunction')]",
-          "Properties": {
-            "MachineName": "[variables('vmName')]"
+          "configuration": {
+            "url": "[variables('modulesUrl')]",
+            "script": "WebSiteInstall.ps1",
+            "function": "[variables('configurationFunction')]"
+          },
+          "configurationArguments": {
+            "nodeName": "[variables('vmName')]"
           }
         },
         "protectedSettings": null
       }
-}
+    }
