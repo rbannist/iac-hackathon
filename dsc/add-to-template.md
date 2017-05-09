@@ -1,10 +1,10 @@
-Add the following variables
+Add the following variables:
 
 "modulesUrl": "https://raw.githubusercontent.com/bhummerstone/iac-hackathon/master/dsc/WebsiteInstall.ps1.zip",
 "configurationFunction": "WebsiteInstall.ps1\\Main"
 
 
-Add the following resource after the Virtual Machine resource
+Add the following resource after the Virtual Machine resource:
 
 {
       "type": "Microsoft.Compute/virtualMachines/extensions",

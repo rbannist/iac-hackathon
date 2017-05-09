@@ -10,18 +10,19 @@ az group create -n bhiacdeploy01 -l westeurope
 ### Create Jenkins VM
 * Azure Portal -> New -> Jenkins (Bitnami)
 * Deploy to Jenkins RG
+* Managed Disks, always!
 * A2_v2 is a good size
 * New vNet -> 192.168.0.0/23 for address space, 192.168.0.0/24 for subnet
 * Leave boot diagnostics enabled
 
 ### Initial Jenkins Config
-* Browse to public IP of Jenkins server
-* Username is user
+* Browse to public IP of Jenkins server (can see in  properties of VM)
+* Username is "user"
 * Password is shown in boot diagnostics of VM
 * Install recommended plugins, restart
 
 ### Prepare Jenkins VM
-* SSH into Jenkins VM
+* SSH into Jenkins VM using public IP
 * Install Azure CLI using following code:
 
 ```bash
@@ -31,6 +32,7 @@ sudo apt-key adv --keyserver packages.microsoft.com --recv-keys 417A0893
 sudo apt-get update && sudo apt-get install azure-cli -y
 ```
 
+* Login to Azure CLI using "az login"
 * Create Azure Service Principal with required permissions:
 ```bash
 az ad sp create-for-rbac --scopes /subscriptions/<subscription-id>/resourceGroups/bhiacdeploy01 -n "bhjenkinssp"
