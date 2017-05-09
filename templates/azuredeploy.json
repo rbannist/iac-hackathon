@@ -48,8 +48,8 @@
     "vmName": "SimpleWinVM",
     "virtualNetworkName": "MyVNET",
     "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]",
-    "modulesUrl": "https://raw.githubusercontent.com/bhummerstone/iac-hackathon-dsc/master/WebsiteInstall-iac.zip",
-    "dscScript": "WebsiteInstall-iac.ps1",
+    "modulesUrl": "https://raw.githubusercontent.com/bhummerstone/iac-hackathon-dsc/master/WebsiteInstall.zip",
+    "dscScript": "WebsiteInstall.ps1",
     "configurationFunction": "Main"
   },
   "resources": [

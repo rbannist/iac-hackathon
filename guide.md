@@ -100,8 +100,11 @@ az group deployment create -g bhiacdeploy01 --template-file templates/azuredeplo
 
 ### Updating the DSC Configuration
 * Current example website is a bit boring (sorry Rick) so let's change it up
-* Edit modulesURL and dscScript variables in templates/azuredeploy.json -> apped "-iac" to both
+* In iac-hackathon-dsc repo, copy originals/WebsiteInstall-iac.ps1 into originals/WebsiteInstall.ps1
+* Add new WebsiteInstall.ps1 to new WebsiteInstall.zip
+* Replace old WebsiteInstall.zip with new WebsiteInstall.zip
 * Commit and push
+* In Jenkins, click "Build Now" to kick off build without changing code
 * Browse back to public IP of VM to see changes
 
 ## Phase 4: Azure Automation DSC
