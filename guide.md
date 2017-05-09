@@ -95,14 +95,14 @@ az group deployment create -g bhiacdeploy01 --template-file templates/azuredeplo
 * In iac-hackathon repo, copy code from dsc-in-template.md into templates/azuredeploy.json
 * Replace <github-username> with your GitHub username
 * Commit and push the changes
-* RDP into the VM and browse to http://localhost
-* Have a look in event logs to see DSC events: Applications and Services Logs/Microsoft/Windows/Desired State Configuration
+* Browse to public IP of VM
+* RDP into the VM and have a look in event logs to see DSC events: Applications and Services Logs/Microsoft/Windows/Desired State Configuration
 
-### Changing Website
+### Updating the DSC Configuration
 * Current example website is a bit boring (sorry Rick) so let's change it up
 * Edit modulesURL and dscScript variables in templates/azuredeploy.json -> apped "-iac" to both
 * Commit and push
-* RDP back into VM and browse to http://localhost
+* Browse back to public IP of VM to see changes
 
 ## Phase 4: Azure Automation DSC
 ### Setting up Azure Automation DSC
