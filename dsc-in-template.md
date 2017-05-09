@@ -26,8 +26,8 @@ Add the following resource after the Virtual Machine resource:
             "script": "[variables('dscScript')]",
             "function": "[variables('configurationFunction')]"
           },
-          "configurationArguments": {
-            "nodeName": "[variables('vmName')]"
+           "configurationArguments": {
+             "nodeName": "[variables('vmName')]"
           }
         },
         "protectedSettings": null

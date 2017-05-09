@@ -175,7 +175,7 @@
       ],
       "properties": {
         "hardwareProfile": {
-          "vmSize": "Standard_A2"
+          "vmSize": "Standard_DS2_v2"
         },
         "osProfile": {
           "computerName": "[variables('vmName')]",
@@ -190,7 +190,10 @@
             "version": "latest"
           },
           "osDisk": {
-            "createOption": "FromImage"
+            "createOption": "FromImage",
+            "managedDisk": {
+              "storageAccountType": "Premium_LRS"
+            }
           }
         },
         "networkProfile": {
@@ -202,7 +205,7 @@
         },
         "diagnosticsProfile": {
           "bootDiagnostics": {
-            "enabled": "true",
+            "enabled": true,
             "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))).primaryEndpoints.blob]"
           }
         }
@@ -228,7 +231,7 @@
             "function": "[variables('configurationFunction')]"
           },
           "configurationArguments": {
-            "nodeName": "[variables('vmName')]"
+             "nodeName": "[variables('vmName')]"
           }
         },
         "protectedSettings": null

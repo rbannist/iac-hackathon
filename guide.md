@@ -100,17 +100,22 @@ az group deployment create -g bhiacdeploy01 --template-file templates/azuredeplo
 
 ### Updating the DSC Configuration
 * Current example website is a bit boring (sorry Rick) so let's change it up
-* Append "-iac" to modulesURL and dscScript variables
+* Append "-iac" to modulesURL and dscScript variables; this references a different DSC module
 * Commit and push
-* In Jenkins, click "Build Now" to kick off build without changing code
 * Browse back to public IP of VM to see changes
+
 
 ## Phase 4: Azure Automation DSC
 ### Setting up Azure Automation DSC
+* In the Portal, New -> Automation -> Create
+* Name, put it in the Jenkins RG
+* Browse to Automation Account -> DSC Configurations
+* Add WebsiteInstall-aadsc.ps1 from iac-hackathon-dsc/originals
+* Once published, select Configuration -> Compile. This generates the configuration MOF and uploads it to the Pull server
 
 ### Registering Nodes to Azure Automation
-* Replace DSC config in templates/azuredeploy.json with code in register-to-aadsc.md
-* 
-
-
-### Migrating existing DSC to Azure Automation
+* Browse to VM in Portal -> Extensions
+* Uninstall existing PowerShell extension
+* Go to Automation Account -> DSC Nodes -> Add Azure VM
+* Add VM, fill in settings
+* Browse to VM's public IP, confirm that changes have taken effect
