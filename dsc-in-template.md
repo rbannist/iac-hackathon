@@ -1,6 +1,7 @@
 Add the following variables:
 
 "modulesUrl": "https://raw.githubusercontent.com/<github-username>/iac-hackathon-dsc/master/WebsiteInstall.zip",
+"dscScript": "WebsiteInstall.ps1",
 "configurationFunction": "Main"
 
 
@@ -22,7 +23,7 @@ Add the following resource after the Virtual Machine resource:
         "settings": {
           "configuration": {
             "url": "[variables('modulesUrl')]",
-            "script": "WebSiteInstall.ps1",
+            "script": "[variables('dscScript')]",
             "function": "[variables('configurationFunction')]"
           },
           "configurationArguments": {
