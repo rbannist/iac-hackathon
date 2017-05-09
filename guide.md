@@ -55,7 +55,7 @@ az login --service-principal -u <appID> -p <password> --tenant <tenant>
 
 ```bash
 az login --service-principal -u <appID> -p <password> --tenant <tenant>
-az group deployment create -g bhiacdeploy01 --template-file templates/azuredeploy.json --parameters \"{\"adminPassword\":{\"value\":\"<secure_password>\"},\"dnsLabelPrefix\":{\"value\":\"<unique_dns>\"}}\"
+az group deployment create -g bhiacdeploy01 --template-file templates/azuredeploy.json --parameters \"{\"adminPassword\":{\"value\":\"<secure_password>\"},\"dnsLabelPrefix\":{\"value\":\"<unique_dns>\"}}\" --verbose
 ```
 
 * Save, Build Now
@@ -100,9 +100,7 @@ az group deployment create -g bhiacdeploy01 --template-file templates/azuredeplo
 
 ### Updating the DSC Configuration
 * Current example website is a bit boring (sorry Rick) so let's change it up
-* In iac-hackathon-dsc repo, copy originals/WebsiteInstall-iac.ps1 into originals/WebsiteInstall.ps1
-* Add new WebsiteInstall.ps1 to new WebsiteInstall.zip
-* Replace old WebsiteInstall.zip with new WebsiteInstall.zip
+* Append "-iac" to modulesURL and dscScript variables
 * Commit and push
 * In Jenkins, click "Build Now" to kick off build without changing code
 * Browse back to public IP of VM to see changes
