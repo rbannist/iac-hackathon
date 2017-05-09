@@ -8,7 +8,7 @@ Add the following resource after the Virtual Machine resource:
 
 {
       "type": "Microsoft.Compute/virtualMachines/extensions",
-      "name": "DSC",
+      "name": "[concat(variables('vmName'),'/Microsoft.Powershell.DSC')]",
       "apiVersion": "2015-05-01-preview",
       "location": "[resourceGroup().location]",
       "dependsOn": [
