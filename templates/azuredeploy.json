@@ -47,7 +47,7 @@
     "vmName": "SimpleWinVM",
     "virtualNetworkName": "MyVNET",
     "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]",
-    "modulesUrl": "https://raw.githubusercontent.com/bhummerstone/iac-hackathon/master/dsc/WebsiteInstall.ps1.zip",
+    "modulesUrl": "https://raw.githubusercontent.com/bhummerstone/iac-hackathon-dsc/master/WebsiteInstall.zip",
     "configurationFunction": "WebsiteInstall.ps1\\Main"
   },
   "resources": [
@@ -179,10 +179,13 @@
         "typeHandlerVersion": "2.20",
         "autoUpgradeMinorVersion": true,
         "settings": {
-          "ModulesUrl": "[variables('modulesUrl')]",
-          "ConfigurationFunction": "[variables('configurationFunction')]",
-          "Properties": {
-            "MachineName": "[variables('vmName')]"
+          "configuration": {
+            "url": "[variables('modulesUrl')]",
+            "script": "WebSiteInstall.ps1",
+            "function": "[variables('configurationFunction')]"
+          },
+          "configurationArguments": {
+            "nodeName": "[variables('vmName')]"
           }
         },
         "protectedSettings": null

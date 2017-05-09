@@ -1,6 +1,6 @@
 Add the following variables:
 
-"modulesUrl": "https://raw.githubusercontent.com/bhummerstone/iac-hackathon/master/dsc/WebsiteInstall.ps1.zip",
+"modulesUrl": "https://raw.githubusercontent.com/<github-username>/iac-hackathon-dsc/master/WebsiteInstall.zip",
 "configurationFunction": "WebsiteInstall.ps1\\Main"
 
 

@@ -87,10 +87,20 @@ az group deployment create -g bhiacdeploy01 --template-file templates/azuredeplo
 
 
 ## Phase 3: Integrating Desired State Configuration
+### Getting Started
+* Fork https://github.com/bhummerstone/iac-hackathon-dsc repo
+* Clone to local machine
+
 ### Adding DSC to Existing Template
-* Copy code from dsc/add-to-template.md into templates/azuredeploy.json
+* Copy code from add-to-template.md into templates/azuredeploy.json
+* Replace <github-username> with your GitHub username, natch
 * Commit and push the changes
 * RDP into the VM and browse to http://localhost
+* Have a look in event logs to see DSC events: Applications and Services Logs/Microsoft/Windows/Desired State Configuration
 
 
 ## Phase 4: Azure Automation DSC
+### Setting up Azure Automation DSC
+
+
+### Migrating existing DSC to Azure Automation
