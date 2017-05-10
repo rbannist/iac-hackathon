@@ -68,6 +68,7 @@ az group deployment create -g <resource-group> --template-file templates/azurede
 * Install Git for Windows/Linux/Mac
 * Fork this repository on GitHub
 * Clone it locally from your fork
+* Modify build settings to replace bhummerstone/iac-hackathon with own fork
 
 ### Link Jenkins/GitHub
 * Go to GitHub -> Profile pic drop down -> Settings -> Personal access tokens
