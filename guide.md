@@ -114,8 +114,7 @@ az group deployment create -g bhiacdeploy01 --template-file templates/azuredeplo
 * Once published, select Configuration -> Compile. This generates the configuration MOF and uploads it to the Pull server
 
 ### Registering Nodes to Azure Automation
-* Browse to VM in Portal -> Extensions
-* Uninstall existing PowerShell extension
+* Create new VM -> WS 2016 Datacentre
 * Go to Automation Account -> DSC Nodes -> Add Azure VM
 * Add VM
 * Node Configuration = WebServer.WebServer
