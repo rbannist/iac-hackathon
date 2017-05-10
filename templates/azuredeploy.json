@@ -40,13 +40,13 @@
   "variables": {
     "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'sawinvm')]",
     "nsgName": "[concat('nsg-',parameters('dnsLabelPrefix'))]",
-    "nicName": "myVMNic",
+    "nicName": "[concat('vnic-', parameters('dnsLabelPrefix'))]",
     "addressPrefix": "10.0.0.0/16",
     "subnetName": "Subnet",
     "subnetPrefix": "10.0.0.0/24",
-    "publicIPAddressName": "myPublicIP",
-    "vmName": "SimpleWinVM",
-    "virtualNetworkName": "MyVNET",
+    "publicIPAddressName": "[concat('pip-', parameters('dnsLabelPrefix'))]",
+    "vmName": "[concat('vm-', parameters('dnsLabelPrefix'))]",
+    "virtualNetworkName": "[concat('vnet-', parameters('dnsLabelPrefix'))]",
     "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]"
   },
   "resources": [
