@@ -55,7 +55,7 @@ az login --service-principal -u <appID> -p <password> --tenant <tenant>
 
 ```bash
 az login --service-principal -u <appID> -p <password> --tenant <tenant>
-az group deployment create -g bhiacdeploy01 --template-file templates/azuredeploy.json --parameters \"{\"adminPassword\":{\"value\":\"<secure_password>\"},\"dnsLabelPrefix\":{\"value\":\"<unique_dns>\"}}\" --verbose
+az group deployment create -g <resource-group> --template-file templates/azuredeploy.json --parameters '{"adminPassword":{"value":"<secure_password>"},"dnsLabelPrefix":{"value":"<unique_dns>"}}' --verbose
 ```
 
 * Save, Build Now
