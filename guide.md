@@ -117,5 +117,7 @@ az group deployment create -g bhiacdeploy01 --template-file templates/azuredeplo
 * Browse to VM in Portal -> Extensions
 * Uninstall existing PowerShell extension
 * Go to Automation Account -> DSC Nodes -> Add Azure VM
-* Add VM, fill in settings
+* Add VM
+* Node Configuration = WebServer.WebServer
+* Tick boxes for Reboot and Module Overwrite
 * Browse to VM's public IP, confirm that changes have taken effect
