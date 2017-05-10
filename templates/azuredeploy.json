@@ -47,7 +47,10 @@
     "publicIPAddressName": "[concat('pip-', parameters('dnsLabelPrefix'))]",
     "vmName": "[concat('vm-', parameters('dnsLabelPrefix'))]",
     "virtualNetworkName": "[concat('vnet-', parameters('dnsLabelPrefix'))]",
-    "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]"
+    "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]",
+    "modulesUrl": "https://raw.githubusercontent.com/bhummerstone/iac-hackathon-dsc/master/WebsiteInstall.zip",
+    "dscScript": "WebsiteInstall.ps1",
+    "configurationFunction": "Main"
   },
   "resources": [
     {
@@ -206,6 +209,32 @@
             "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))).primaryEndpoints.blob]"
           }
         }
+      }
+    },
+    {
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "name": "[concat(variables('vmName'),'/Microsoft.Powershell.DSC')]",
+      "apiVersion": "2015-05-01-preview",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+        "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
+      ],
+      "properties": {
+        "publisher": "Microsoft.Powershell",
+        "type": "DSC",
+        "typeHandlerVersion": "2.20",
+        "autoUpgradeMinorVersion": true,
+        "settings": {
+          "configuration": {
+            "url": "[variables('modulesUrl')]",
+            "script": "[variables('dscScript')]",
+            "function": "[variables('configurationFunction')]"
+          },
+           "configurationArguments": {
+             "nodeName": "[variables('vmName')]"
+          }
+        },
+        "protectedSettings": null
       }
     }
   ],
